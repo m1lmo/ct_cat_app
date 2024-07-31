@@ -13,8 +13,8 @@ import 'package:wiet_test_app/core/widget/c_notify.dart';
 import 'package:wiet_test_app/feature/cubit/data/data_cubit.dart';
 import 'package:wiet_test_app/feature/model/cat_model/cat_model.dart';
 import 'package:wiet_test_app/feature/model/result_model/result_model.dart';
-
 import 'package:wiet_test_app/feature/model/tier_model/tier_model.dart';
+
 import 'package:wiet_test_app/feature/view/home/home_view_inherited.dart';
 
 ///This widget is used to display donut chart and grid view
@@ -23,95 +23,109 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentState = HomeViewInherited.of(context);
     return Scaffold(
       appBar: AppBar(
-        scrolledUnderElevation: 0,
+        title: const Text(ProjectStrings.homeAppBar),
       ),
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          const _GridViewWidget(),
-          SizedBox(height: 2.h),
-          BlocSelector<DataCubit, DataState, List<TierModel?>?>(
-            selector: (state) {
-              return state.tier;
-            },
-            builder: (context, state) {
-              if (state == null) {
-                CNotify(title: 'Error', message: 'Failed to load data').show();
-                return const SizedBox();
-              }
-              return Stack(
-                alignment: Alignment.center,
-                children: [
-                  pie_chart.PieChart(
-                    initialAngleInDegree: -90,
-                    chartValuesOptions: const pie_chart.ChartValuesOptions(showChartValues: false),
-                    legendOptions: const pie_chart.LegendOptions(showLegends: false),
-                    colorList: state.map((e) => HexColor(e!.bgColor ?? '')).toList(),
-                    chartRadius: 150.sp,
-                    ringStrokeWidth: 40,
-                    centerWidget: const _ChartCenterWidget(),
-                    chartType: pie_chart.ChartType.ring,
-                    dataMap: {
-                      '${state[0]?.tierName}': 1,
-                      '${state[1]?.tierName}': 1,
-                      '${state[2]?.tierName}': 1,
-                      '${state[3]?.tierName}': 1,
-                    },
-                  ),
-                  _CircularTierName(tier: state),
-                  _CircularTierPoint(tier: state),
-                  BlocSelector<DataCubit, DataState, ResultModel?>(
-                    selector: (state) {
-                      return state.result;
-                    },
-                    builder: (context, result) {
-                      if (result == null) {
-                        CNotify(title: 'Error', message: 'Failed to load data').show();
-                        return const SizedBox.shrink();
-                      }
-                      return Positioned(
-                        bottom: 22.5.h,
-                        child: Transform.rotate(
-                          alignment: Alignment.centerLeft,
-                          angle: currentState.calculateMarker(result.tierPoints?.toDouble() ?? 0, state),
-                          // angle: state.last!.minPoint! / 2000 / 2 * 3.14,
-                          origin: Offset(0.sp, 74.sp), //! DON'T CHANGE THIS
-                          child: Stack(
-                            children: [
-                              Align(
-                                alignment: Alignment.topCenter,
-                                child: Transform.translate(
-                                  offset: Offset(-0.8.w, -20),
-                                  child: Container(
-                                    width: 10,
-                                    height: 40,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                height: 5.h,
-                                width: .3.h,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const _GridViewWidget(),
+            SizedBox(height: 1.h),
+            const _DonutChartWidget(),
+            SizedBox(height: 2.h),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _DonutChartWidget extends StatelessWidget {
+  const _DonutChartWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final currentState = HomeViewInherited.of(context);
+    return BlocSelector<DataCubit, DataState, List<TierModel?>?>(
+      selector: (state) {
+        return state.tier;
+      },
+      builder: (context, state) {
+        if (state == null) {
+          CNotify(title: 'Error', message: 'Failed to load data').show();
+          return const SizedBox();
+        }
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            pie_chart.PieChart(
+              initialAngleInDegree: -90,
+              chartValuesOptions: const pie_chart.ChartValuesOptions(showChartValues: false),
+              legendOptions: const pie_chart.LegendOptions(showLegends: false),
+              colorList: state.map((e) => HexColor(e!.bgColor ?? '')).toList(),
+              chartRadius: 150.sp,
+              ringStrokeWidth: 40,
+              centerWidget: const _ChartCenterWidget(),
+              chartType: pie_chart.ChartType.ring,
+              dataMap: {
+                '${state[0]?.tierName}': 1,
+                '${state[1]?.tierName}': 1,
+                '${state[2]?.tierName}': 1,
+                '${state[3]?.tierName}': 1,
+              },
+            ),
+            _CircularTierName(tier: state),
+            _CircularTierPoint(tier: state),
+            BlocSelector<DataCubit, DataState, ResultModel?>(
+              selector: (state) {
+                return state.result;
+              },
+              builder: (context, result) {
+                if (result == null) {
+                  CNotify(title: 'Error', message: 'Failed to load data').show();
+                  return const SizedBox.shrink();
+                }
+                return Positioned(
+                  bottom: 22.5.h,
+                  child: Transform.rotate(
+                    alignment: Alignment.centerLeft,
+                    angle: currentState.calculateMarker(result.tierPoints?.toDouble() ?? 0, state),
+                    // angle: state.last!.minPoint! / 2000 / 2 * 3.14,
+                    origin: Offset(0.sp, 74.sp), //! DON'T CHANGE THIS
+                    child: Stack(
+                      children: [
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Transform.translate(
+                            offset: Offset(-0.8.w, -20),
+                            child: Container(
+                              width: 10,
+                              height: 40,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
                                 color: Colors.black,
                               ),
-                            ],
+                            ),
                           ),
                         ),
-                      );
-                    },
+                        Container(
+                          height: 5.h,
+                          width: .3.h,
+                          color: Colors.black,
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              );
-            },
-          ),
-        ],
-      ),
+                );
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -124,7 +138,7 @@ class _GridViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40.h,
+      height: 50.h,
       child: BlocSelector<DataCubit, DataState, List<CatModel?>?>(
         selector: (state) {
           return state.cat;
