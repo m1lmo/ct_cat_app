@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:wiet_test_app/feature/model/cat_model.dart';
-import 'package:wiet_test_app/feature/model/main_model.dart';
-import 'package:wiet_test_app/feature/model/tier_model.dart';
+import 'package:wiet_test_app/feature/model/cat_model/cat_model.dart';
+import 'package:wiet_test_app/feature/model/main_model/main_model.dart';
+import 'package:wiet_test_app/feature/model/tier_model/tier_model.dart';
 part 'result_model.g.dart';
 
 @JsonSerializable()

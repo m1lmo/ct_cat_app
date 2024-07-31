@@ -1,5 +1,5 @@
 import 'package:dio/src/dio.dart';
-import 'package:wiet_test_app/feature/model/data_model.dart';
+import 'package:wiet_test_app/feature/model/data_model/data_model.dart';
 import 'package:wiet_test_app/feature/service/i_repository.dart';
 
 /// DataRepository for DataModel

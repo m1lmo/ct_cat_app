@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wiet_test_app/feature/cubit/data/data_cubit.dart';
-import 'package:wiet_test_app/feature/model/tier_model.dart';
+import 'package:wiet_test_app/feature/model/tier_model/tier_model.dart';
 import 'package:wiet_test_app/feature/view/home/home_view.dart';
 
 /// This class is used to pass the state of [HomeViewHost] to [HomeView]

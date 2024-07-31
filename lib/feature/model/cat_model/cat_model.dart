@@ -2,7 +2,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:wiet_test_app/feature/model/main_model.dart';
+import 'package:wiet_test_app/feature/model/main_model/main_model.dart';
 part 'cat_model.g.dart';
 
 @JsonSerializable()

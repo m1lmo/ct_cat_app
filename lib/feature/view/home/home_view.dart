@@ -11,10 +11,10 @@ import 'package:wiet_test_app/core/constants/project_strings.dart';
 import 'package:wiet_test_app/core/helper/hex_color.dart';
 import 'package:wiet_test_app/core/widget/c_notify.dart';
 import 'package:wiet_test_app/feature/cubit/data/data_cubit.dart';
-import 'package:wiet_test_app/feature/model/cat_model.dart';
-import 'package:wiet_test_app/feature/model/result_model.dart';
+import 'package:wiet_test_app/feature/model/cat_model/cat_model.dart';
+import 'package:wiet_test_app/feature/model/result_model/result_model.dart';
 
-import 'package:wiet_test_app/feature/model/tier_model.dart';
+import 'package:wiet_test_app/feature/model/tier_model/tier_model.dart';
 import 'package:wiet_test_app/feature/view/home/home_view_inherited.dart';
 
 ///This widget is used to display donut chart and grid view

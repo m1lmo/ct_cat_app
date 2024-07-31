@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
-import 'package:wiet_test_app/feature/model/cat_model.dart';
-import 'package:wiet_test_app/feature/model/data_model.dart';
-import 'package:wiet_test_app/feature/model/result_model.dart';
-import 'package:wiet_test_app/feature/model/tier_model.dart';
+import 'package:wiet_test_app/feature/model/cat_model/cat_model.dart';
+import 'package:wiet_test_app/feature/model/data_model/data_model.dart';
+import 'package:wiet_test_app/feature/model/result_model/result_model.dart';
+import 'package:wiet_test_app/feature/model/tier_model/tier_model.dart';
 import 'package:wiet_test_app/feature/service/repository/data_repository.dart';
 
 part 'data_state.dart';
