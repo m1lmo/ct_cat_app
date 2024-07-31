@@ -318,7 +318,7 @@ class _CircularTierName extends StatelessWidget {
           ),
         ),
         TextItem(
-          startAngle: 25.sp,
+          startAngle: 28.sp,
           space: 6,
           startAngleAlignment: StartAngleAlignment.end,
           direction: CircularTextDirection.anticlockwise,
@@ -332,7 +332,7 @@ class _CircularTierName extends StatelessWidget {
           ),
         ),
         TextItem(
-          startAngle: 82.sp,
+          startAngle: 88.sp,
           startAngleAlignment: StartAngleAlignment.end,
           space: 6,
           direction: CircularTextDirection.anticlockwise,
@@ -346,7 +346,7 @@ class _CircularTierName extends StatelessWidget {
           ),
         ),
         TextItem(
-          startAngle: -80.sp,
+          startAngle: -88.sp,
           startAngleAlignment: StartAngleAlignment.end,
           space: 6,
           text: Text(
