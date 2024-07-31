@@ -67,8 +67,8 @@ class _DonutChartWidget extends StatelessWidget {
               chartValuesOptions: const pie_chart.ChartValuesOptions(showChartValues: false),
               legendOptions: const pie_chart.LegendOptions(showLegends: false),
               colorList: state.map((e) => HexColor(e!.bgColor ?? '')).toList(),
-              chartRadius: 150.sp,
-              ringStrokeWidth: 40,
+              chartRadius: 155.sp,
+              ringStrokeWidth: 8.w,
               centerWidget: const _ChartCenterWidget(),
               chartType: pie_chart.ChartType.ring,
               dataMap: {
@@ -90,12 +90,12 @@ class _DonutChartWidget extends StatelessWidget {
                   return const SizedBox.shrink();
                 }
                 return Positioned(
-                  bottom: 22.5.h,
+                  top: 0,
                   child: Transform.rotate(
                     alignment: Alignment.centerLeft,
                     angle: currentState.calculateMarker(result.tierPoints?.toDouble() ?? 0, state),
                     // angle: state.last!.minPoint! / 2000 / 2 * 3.14,
-                    origin: Offset(0.sp, 74.sp), //! DON'T CHANGE THIS
+                    origin: Offset(0, 75.sp), //! DON'T CHANGE THIS
                     child: Stack(
                       children: [
                         Align(
@@ -302,7 +302,7 @@ class _CircularTierName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircularText(
-      radius: 82.sp,
+      radius: 84.sp,
       children: [
         TextItem(
           startAngle: -20.sp,
