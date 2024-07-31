@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
+import 'package:wiet_test_app/core/constants/extension/theme_getter_extension.dart';
 import 'package:wiet_test_app/core/widget/c_notify.dart';
 import 'package:wiet_test_app/feature/cubit/data/data_cubit.dart';
 import 'package:wiet_test_app/feature/view/splash/splash_view_inherited.dart';
@@ -29,10 +30,15 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
-              appBarTheme: const AppBarTheme(
+              appBarTheme: AppBarTheme(
                 backgroundColor: Colors.deepPurple,
+                titleTextStyle: context.theme.textTheme.headlineLarge?.copyWith(color: Colors.white),
               ),
               textTheme: TextTheme(
+                headlineLarge: TextStyle(
+                  fontSize: 30.sp,
+                  fontWeight: FontWeight.bold,
+                ),
                 bodyLarge: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
