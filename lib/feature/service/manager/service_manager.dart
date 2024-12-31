@@ -8,5 +8,6 @@ abstract mixin class ServiceManager<T extends ServiceModel> {
   Dio get dio;
   String get path;
   T Function(Map<String, dynamic> json) get fromJson;
-  String baseUrl = 'https://portal.wietmobile.com:8443';
+  //temp
+  const String baseUrl = devEnv.baseUrl;
 }
